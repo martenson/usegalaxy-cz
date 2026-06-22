@@ -68,6 +68,12 @@ tools:
   toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/.*:
     context:
       walltime: 96
+  toolshed.g2.bx.psu.edu/repos/bgruening/canu/canu/.*:
+    context:
+      walltime: 96
+  toolshed.g2.bx.psu.edu/repos/bgruening/hifiasm/hifiasm/.*:
+    context:
+      walltime: 96
   toolshed.g2.bx.psu.edu/repos/iuc/anndata_import/anndata_import/.*:
     # DEMON: the following mem setting is taken from tpv-shared at 17-03-2026 - this should conserve it for us
     mem: 2 + input_size * 10
@@ -87,7 +93,7 @@ tools:
           import os
           import functools
           from typing import Optional
-      
+
           @functools.lru_cache(maxsize=128)
           def get_ref_size(lookup_value: str, table_name: str, lookup_column: str, value_column: str, value_template: str) -> Optional[int]:
               ref_size = None  # optional int will be None unless set
@@ -265,7 +271,7 @@ tools:
     inherits: local_running_tools
     env:
       LITELLM_CONFIG_FILE: "{{ galaxy_config_dir }}/llm_hub_config.yaml"
-     
+
 
 roles:
   training.*:
